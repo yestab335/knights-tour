@@ -1,7 +1,7 @@
 # Warnsdorff's Algorithm
 
 <div align="center">
-  <img src="./img/visualizer.gif" alt="visualizer" />
+  <img src="./.github/visualizer.gif" alt="visualizer" />
   <p align="center">
     <strong>Fig.1 Algorithm Visualization</strong>
   </p>
@@ -18,7 +18,7 @@ $ pip install -r requirements.txt
 A **knight's tour** (See `Fig.2`) is a sequence of moves of a knight on a chessboard such that the knight visits every square only once. If the knight ends on a square that is one knight's move from the beginning square (so that it could tour the board again immediately, following the same path), the tour is closed, otherwise it is open.
 
 <div align="center">
-  <img src="./img/knight-tour.gif" alt="sample knight's tour" width="50%" />
+  <img src="./.github/knight-tour.gif" alt="sample knight's tour" width="50%" />
   <p align="center">
     <strong>Fig.2 Sample Knight's Tour</strong>
   </p>
