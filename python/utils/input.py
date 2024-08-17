@@ -2,7 +2,7 @@ from colorama import Fore
 from os import system, name
 
 def clear() -> None:
-  # Clears The Console
+  # Clears the console
   
   # For Windows
   if name == 'nt':
@@ -13,7 +13,7 @@ def clear() -> None:
     _ = system('clear')
 
 def print_dummy_board() -> None:
-  # Print A Dummy Board With Indexes For All The Cells
+  # Print a dummy board with indexes for all the cells
   j: int = 0
 
   for i in range(9):
@@ -27,7 +27,7 @@ def print_dummy_board() -> None:
   print('\n')
 
 def validate(pos: str) -> bool:
-  # Check If User's Input Is Valid
+  # Check if user's input is valid
   try:
     row, col = list(map(int, pos.split(',')))
     

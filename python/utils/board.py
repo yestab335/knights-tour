@@ -4,13 +4,13 @@ from typing import List
 from time import sleep
 
 def horizontal_line(stdscr, cursor: Cursor) -> None:
-  # Horizontal Boundry Line
+  # Horizontal boundry line
   cursor.set_x(1)
   stdscr.addstr(cursor.get_y(), cursor.get_x(), '-' * 29, curses.color_pair(1))
   cursor.set_y(1)
 
 def vertical_line(stdscr, cursor: Cursor, side: str) -> None:
-  # Vertical Boundry Line
+  # Vertical boundry line
   if side == 'L':
     stdscr.addstr(cursor.get_y(), cursor.get_x(), '|', curses.color_pair(1))
     cursor.set_x(1)
@@ -22,7 +22,7 @@ def vertical_line(stdscr, cursor: Cursor, side: str) -> None:
 
 
 def get_progress(board) -> str:
-  # Return The Progress Of The Algorithm
+  # Return the progress of the algorithm
   visited_cell_count = 0
   total_cell_count = 64
 
@@ -34,13 +34,13 @@ def get_progress(board) -> str:
   return f'{progress}%'
 
 def update_board(stdscr, cursor: Cursor, board: List[List[int]]) -> None:
-  # Paint The Updated Board On The Window
+  # Paint the updated board on the window
   cursor.reset_x()
   cursor.reset_y()
   print_board(stdscr, cursor, board, progress=True)
 
 def print_progress_bar(stdscr, cursor: Cursor, board: List[List[int]]) -> None:
-  # Paint The Progress Bar On The Window
+  # Paint the progress bar on the window
   cursor.set_x(-cursor.get_x())
   cursor.set_y(-cursor.get_y())
   stdscr.addstr(cursor.get_y(), cursor.get_x(), 'completed: ')
@@ -48,27 +48,27 @@ def print_progress_bar(stdscr, cursor: Cursor, board: List[List[int]]) -> None:
   stdscr.addstr(cursor.get_y(), cursor.get_x() + 11, get_progress(board), curses.color_pair(5))
 
 def print_board(stdscr, cursor: Cursor, board: List[List[int]], progress: bool = False, sleep_value: float = 0.5, initialize: bool = False) -> None:
-  # Paint The Board On The Window
+  # Paint the board on the window
   horizontal_line(stdscr, cursor)
   for row in range(8):
     cursor.reset_x()
 
-    # Print Empty Line
+    # Print empty line
     if 0 < row <= 7:
       stdscr.addstr(cursor.get_y(), cursor.get_x(), '|' + ' ' * 29 + '|', curses.color_pair(1))
       cursor.set_y(1)
     
-    # Print Left Border
+    # Print left border
     vertical_line(stdscr, cursor, side='L')
 
     for col in range(8):
-      # Cell Is Visited
+      # Cell is visited
       if board[row][col] == 1:
         stdscr.addstr(cursor.get_y(), cursor.get_x(), str(board[row][col]), curses.color_pair(2))
-      # Knight's Cell
+      # Knight's cell
       elif board[row][col] == 2:
         stdscr.addstr(cursor.get_y(), cursor.get_x(), str(board[row][col]), curses.color_pair(3))
-      # Cell Is Unvisited
+      # Cell is unvisited
       else:
         stdscr.addstr(cursor.get_y(), cursor.get_x(), str(board[row][col]), curses.color_pair(4))
       
@@ -76,13 +76,14 @@ def print_board(stdscr, cursor: Cursor, board: List[List[int]], progress: bool =
 
       if col != 7:
         cursor.set_x(3)
-    # Print Right Border
+    
+    # Print right border
     vertical_line(stdscr, cursor, side='R')
   cursor.reset_x()
   horizontal_line(stdscr, cursor)
 
   if progress:
-    # Print The Progress Bar
+    # Print the progress bar
     print_progress_bar(stdscr, cursor, board)
   
   if initialize:
